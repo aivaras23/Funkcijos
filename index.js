@@ -56,7 +56,7 @@ function factorialNum(number) {
 // 7. Parašykite funkciją, kuri priima masyvą skaičių ir skaičių kaip argumentus, o grąžina naują masyvą, 
 // kuriame yra tik tie skaičiai, kurie didesni už pateiktą skaičių.
 function filterArray(array, arg) {
-    let result = [];
+    const result = [];
     for (let i = 0; i < array.length; i++) {
         if (array[i] >= arg) {
             result.push(array[i]);
@@ -79,10 +79,7 @@ function reverseString(text) {
 // 9. Parašykite funkciją, kuri nustato, ar pateiktas tekstas yra palindromas.
 function palindromeChecker(text) {
     const reversedText = text.split('').reverse().join('');
-    if (text === reversedText) {
-        return true;
-    }
-    return false;
+    return text === reversedText ? true : false;
 }
 // console.log(palindromeChecker('level'))
 // rezultatas: true
@@ -90,10 +87,7 @@ function palindromeChecker(text) {
 
 // 10. Sukurkite funkciją, kuri priima skaičių ir grąžina true, jei skaičius yra lyginis, ir false, jei skaičius yra nelyginis.
 function isNumberEven(number) {
-    if (number % 2 === 0) {
-        return true;
-    }
-    return false;
+    return number % 2 === 0 ? true : false;
 }
 // console.log(isNumberEven(4));
 // rezultatas: true
@@ -214,7 +208,6 @@ function replaceNextLetter(text) {
         if (/[a-z]/.test(s[i])) {
             let index = alphabet.indexOf(s[i]);
             let nextIndex = (index + 1) % alphabet.length;
-
             result += alphabet[nextIndex];
         }
     }
