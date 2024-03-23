@@ -73,7 +73,7 @@ for (const key in personInfo) {
     }
 }
 // console.log(newObject);
-/*
+/* rezultatas:
 {
   address: {
     street: '123 Main Street',
@@ -83,4 +83,158 @@ for (const key in personInfo) {
   },
   hobbies: [ 'reading', 'cycling', 'hiking' ]
 }
+*/
+
+/* 6. Suminė Vertė Objekte: Turite objektą, kurio savybės yra skaičiai. 
+Naudodami for in ciklą, apskaičiuokite visų objekto savybių sumą. */
+
+
+const skaiciuObj = {
+    1: 23,
+    2: 55,
+    3: 91,
+    4: 41,
+    5: 10,
+    6: 19,
+}
+let sum = 0;
+for (const suma in skaiciuObj) {
+    sum += skaiciuObj[suma];
+}
+// console.log(sum);
+// rezultatas: 239
+
+/* 7. Masyvo Elementų Kiekis: Turite masyvą su skirtingų tipų elementais. 
+Naudodami for ciklą, suskaičiuokite, kiek yra kiekvieno tipo elementų. */
+
+const elArray = ['a', null, 2, 3, undefined, 'bc', true, false, null, 'aaa'];
+
+let strCounter = 0;
+let numCounter = 0;
+let nullCounter = 0;
+let undefinedCounter = 0;
+let booleanCounter = 0;
+for (let i = 0; i < elArray.length; i++) {
+    if (typeof elArray[i] === 'string') {
+        strCounter++;
+    }
+    if (typeof elArray[i] === 'number') {
+        numCounter++;
+    }
+    if (elArray[i] === null) {
+        nullCounter++;
+    }
+    if (typeof elArray[i] === 'undefined') {
+        undefinedCounter++;
+    }
+    if (typeof elArray[i] === 'boolean') {
+        booleanCounter++;
+    }
+}
+// console.log(`Strings found: ${strCounter}\nNumbers found: ${numCounter}\nNulls found: ${nullCounter}\nUndefineds found: ${undefinedCounter}\nBooleans found: ${booleanCounter}`);
+
+/* rezultatas:
+Strings found: 3
+Numbers found: 2
+Nulls found: 2
+Undefineds found: 1
+Booleans found: 2
+*/
+
+
+/* 8. Objekto Konversija Į Masyvą: Sukurkite funkciją, kuri objektą (raktai ir reikšmės) konvertuotų į masyvą, 
+kur kiekvienas elementas būtų [raktas, reikšmė] pora. */
+
+const studentai = [
+    { name: 'John', age: 17 },
+    { name: 'David', age: 16 },
+    { name: 'Lucas', age: 16 },
+    { name: 'Isabella', age: 16 },
+    { name: 'Emily', age: 17 },
+    { name: 'Sophia', age: 16 },
+]
+
+const studentuMas = [];
+for (const students of studentai) {
+    studentuMas.push([students.name, students.age]);
+}
+// console.log(studentuMas);
+/* rezultatas
+[
+  [ 'John', 17 ],
+  [ 'David', 16 ],
+  [ 'Lucas', 16 ],
+  [ 'Isabella', 16 ],
+  [ 'Emily', 17 ],
+  [ 'Sophia', 16 ]
+]
+*/
+
+/*  Dinaminis Objekto Sudarymas: Naudodami for ciklą, sukurti objektą, 
+kurio raktai yra skaičiai nuo 1 iki n, o reikšmės - tie skaičiai pakelti kvadratu. */
+
+const numberObject = {};
+
+for (let i = 1; i <= 10; i++) {
+    numberObject[i] = i ** 2;
+}
+// console.log(numberObject);
+
+/* rezultatas
+{
+  '1': 1,
+  '2': 4,
+  '3': 9,
+  '4': 16,
+  '5': 25,
+  '6': 36,
+  '7': 49,
+  '8': 64,
+  '9': 81,
+  '10': 100
+}
+*/
+
+/* 10  Sąlyginės Reikšmės Objekte: Turite objektą, kuriame saugomos įvairios vartotojų savybės 
+(pvz., vardas, amžius, miestas). Sukurkite funkciją, kuri naudojant for in ciklą, pakeistų tam tikrų savybių reikšmes, 
+jeigu jos tenkina nurodytą sąlygą (pvz., jeigu vartotojo amžius yra mažesnis nei 18, pridėkite savybę pilnametis: false).*/
+
+// const vartotojai = [
+//     { name: 'Jonas', age: 21, city: 'Vilnius' },
+//     { name: 'Dovidas', age: 16, city: 'Kaunas' },
+//     { name: 'Lukas', age: 16, city: 'Utena' },
+//     { name: 'Emilija', age: 18, city: 'Ukmerge' },
+//     { name: 'Julija', age: 17, city: 'Kaunas' },
+//     { name: 'Kamile', age: 20, city: 'Marijampole' },
+// ]
+
+function vartotojaiFunc(vartotojai) {
+    for (const vartotojas of vartotojai) {
+        if (vartotojas.age < 18) {
+            vartotojas['pilnametis'] = false;
+        }
+    }
+    return vartotojai
+}
+
+/* 
+console.log(vartotojaiFunc([
+    { name: 'Jonas', age: 21, city: 'Vilnius' },
+    { name: 'Dovidas', age: 16, city: 'Kaunas' },
+    { name: 'Lukas', age: 16, city: 'Utena' },
+    { name: 'Emilija', age: 18, city: 'Ukmerge' },
+    { name: 'Julija', age: 17, city: 'Kaunas' },
+    { name: 'Kamile', age: 20, city: 'Marijampole' },
+]))
+*/
+
+/* rezultatas:
+[
+  { name: 'Jonas', age: 21, city: 'Vilnius' },
+  { name: 'Dovidas', age: 16, city: 'Kaunas', pilnametis: false },
+  { name: 'Lukas', age: 16, city: 'Utena', pilnametis: false },
+  { name: 'Emilija', age: 18, city: 'Ukmerge' },
+  { name: 'Julija', age: 17, city: 'Kaunas', pilnametis: false },
+  { name: 'Kamile', age: 20, city: 'Marijampole' }
+]
 */
