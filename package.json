@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "js3": "node --watch objektai2.js",
     "js2": "node --watch objektai.js",
     "js": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
