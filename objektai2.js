@@ -1,8 +1,7 @@
 /*
 1. Masyvo Elementų Filtravimas: Sukurkite funkciją, kuri naudojant
- for ciklą iš masyvo išrenka ir grąžina naują masyvą su elementais, 
- kurie tenkina tam tikrą sąlygą.
- */
+for ciklą iš masyvo išrenka ir grąžina naują masyvą su elementais, 
+kurie tenkina tam tikrą sąlygą. */
 
 const newArr = [];
 function doSomething(arr) {
@@ -15,7 +14,7 @@ function doSomething(arr) {
 }
 
 // console.log(doSomething([1, 2, 3, 3, 3, 4, 5, 7, 3, 3]))
-// rezultatas [ 3, 3, 3, 4, 3, 3 ]
+// rezultatas: [ 3, 3, 3, 4, 3, 3 ]
 
 /* 2 Unikalių Reikšmių Radimas: Turite masyvą su pasikartojančiomis reikšmėmis. 
 Naudodami for ciklą, sukurkite naują masyvą, kuriame būtų tik unikalios reikšmės.*/
@@ -34,10 +33,37 @@ for (let i = 0; i < numArray.length; i++) {
 /* 3. Objekto Gylis: Parašykite funkciją, kuri naudodama for in ciklą ir rekursiją, grąžintų objekto gylį
 (kiek giliausiai objektas turi įdėtinius objektus). */
 
-// ?
+const randomObj = {
+    abc: 55,
+    abc1: {
+        abc: 1,
+        abc2: 2,
+        abc3: {
+            abc1: 1,
+            abc2: {
+                abc1: {
+                    abc: 2,
+                }
+            },
+        }
+    }
+}
+
+function findDepth(obj) {
+    let max = 0;
+    for (const key in obj) {
+        if (typeof obj[key] === 'object') {
+            const depth = findDepth(obj[key]) + 1;
+            max = Math.max(depth, max);
+        }
+    }
+    return max;
+}
+// console.log(findDepth(randomObj))
+// rezultatas: 4
 
 /* 4. Masyvo Atvirkštinis: Turite skaičių masyvą. Naudodami for ciklą, sukurkite naują masyvą,
- kurio elementai būtų pradinio masyvo, bet eilės atvirkščiai. */
+kurio elementai būtų pradinio masyvo, bet eilės atvirkščiai. */
 
 const numArray2 = [1, 2, 3, 4, 5];
 const reversedNumArray2 = [];
@@ -159,7 +185,7 @@ for (const students of studentai) {
     studentuMas.push([students.name, students.age]);
 }
 // console.log(studentuMas);
-/* rezultatas
+/* rezultatas:
 [
   [ 'John', 17 ],
   [ 'David', 16 ],
@@ -180,7 +206,7 @@ for (let i = 1; i <= 10; i++) {
 }
 // console.log(numberObject);
 
-/* rezultatas
+/* rezultatas:
 {
   '1': 1,
   '2': 4,
